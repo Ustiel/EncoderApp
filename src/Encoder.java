@@ -28,8 +28,8 @@ public class Encoder {
             referenceGetIdx.put((char) i, idx++);
         }
 
-        System.out.println(referenceGetIdx); //print reference     
-        System.out.println(referenceGetChar); //print reference   
+        //System.out.println(referenceGetIdx); //print reference     
+        //System.out.println(referenceGetChar); //print reference   
     }
 
     // Encode plaintext based on random offset char
@@ -47,10 +47,10 @@ public class Encoder {
             }
             else{             
                 int refIdx = referenceGetIdx.get(ch);
-                System.out.println("\nrefidx: " + refIdx);
+                //System.out.println("\nrefidx: " + refIdx);
                 int diff = refIdx - offset;
                 
-                System.out.println("\nSUM " + diff);
+                //System.out.println("\nSUM " + diff);
                 int temp = diff < 0? 44+diff: diff;
                 char encodedChar = referenceGetChar.get(temp);
                 str += String.valueOf(encodedChar);
@@ -64,4 +64,5 @@ public class Encoder {
         System.out.println("Encoded text: " + encodedText);
         return "decoded";
     } 
+
 }
