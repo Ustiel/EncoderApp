@@ -1,18 +1,12 @@
-## Getting Started
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+# ENCODER APPLICATION
 
-## Folder Structure
+# INSTRUCTION
+1. Run application. The subsequent steps will require user's input via terminal.
+2. Determine whether to run the encoder or decoder feature. Enter 1 to run encoder feature or enter 2 to run decoder feature. 
+Note: User will be prompted to re-enter input if the validation fails.
+3. Enter string to encode/ decode. Note: User will be prompted to re-enter input if the validation fails.
+4. Result will be reflected. 
 
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+# ASSUMPTIONS
+1. Encoder feature will allow empty space at the start of string. Thus, the different regex used for encoder and decoder. 

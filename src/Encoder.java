@@ -6,6 +6,10 @@ public class Encoder {
     private static final HashMap<Integer, Character> referenceGetChar = new HashMap<Integer, Character>(){};
     private static final HashMap<Character, Integer> referenceGetIdx = new HashMap<Character, Integer>(){};
 
+    public HashMap<Character, Integer> retrieveRefGetIdx(){
+        return referenceGetIdx;
+    }
+
     // to populate reference table without offset
     public void populateReference (){
         int idx = 0;
@@ -27,9 +31,6 @@ public class Encoder {
             referenceGetChar.put(idx, (char) i);
             referenceGetIdx.put((char) i, idx++);
         }
-
-        //System.out.println(referenceGetIdx); //print reference     
-        //System.out.println(referenceGetChar); //print reference   
     }
 
     // Encode plaintext based on random offset char
@@ -37,7 +38,6 @@ public class Encoder {
 
         int offset = (int)(Math.random() * 44); // generate the index of offset
         String str = String.valueOf(referenceGetChar.get(offset)); // add offset char in string.
-        System.out.println(offset + " " + str);
         
         for(int i=0; i<plainText.length(); i++){
             char ch = plainText.charAt(i);
@@ -47,10 +47,8 @@ public class Encoder {
             }
             else{             
                 int refIdx = referenceGetIdx.get(ch);
-                //System.out.println("\nrefidx: " + refIdx);
                 int diff = refIdx - offset;
                 
-                //System.out.println("\nSUM " + diff);
                 int temp = diff < 0? 44+diff: diff;
                 char encodedChar = referenceGetChar.get(temp);
                 str += String.valueOf(encodedChar);
@@ -60,9 +58,28 @@ public class Encoder {
         return str;
     }
 
+    // Decode encoded text
     public String decode (String encodedText){
-        System.out.println("Encoded text: " + encodedText);
-        return "decoded";
-    } 
+        
+        int offset = referenceGetIdx.get(encodedText.charAt(0));
+        String str = "";
 
+        for(int i=1; i<encodedText.length(); i++){
+            char ch = encodedText.charAt(i);
+
+            if (ch == ' '){
+                str += " ";
+            }
+            else{             
+                int refIdx = referenceGetIdx.get(ch);
+                int sum = refIdx + offset;
+                
+                int temp = sum > 43? sum - 44: sum;
+                char decodedChar = referenceGetChar.get(temp);
+                str += String.valueOf(decodedChar);
+            }            
+        }
+
+        return str;
+    } 
 }
