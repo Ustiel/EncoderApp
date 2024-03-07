@@ -1,7 +1,7 @@
 
 # ENCODER APPLICATION
 
-# INSTRUCTION
+# INSTRUCTIONS
 1. Run application. The subsequent steps will require user's input via terminal.
 2. Determine whether to run the encoder or decoder feature. Enter 1 to run encoder feature or enter 2 to run decoder feature. 
 Note: User will be prompted to re-enter input if the validation fails.
